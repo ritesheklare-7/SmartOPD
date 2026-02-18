@@ -1,4 +1,4 @@
-package com.app.smartopd.user_module;
+package com.app.smartopd.user_module.Models;
 
 public class UserHomeModel {
 

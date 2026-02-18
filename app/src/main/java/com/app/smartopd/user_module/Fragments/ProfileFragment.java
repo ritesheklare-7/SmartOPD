@@ -1,4 +1,4 @@
-package com.app.smartopd.user_module;
+package com.app.smartopd.user_module.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.smartopd.R;
+import com.app.smartopd.user_module.Adapters.EmptyHistoryAdapter;
 
 public class ProfileFragment extends Fragment {
 
