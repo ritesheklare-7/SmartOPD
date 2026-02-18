@@ -1,7 +1,7 @@
 package com.app.smartopd.user_module.Fragments;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,14 +15,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.app.smartopd.LoginActivity;
 import com.app.smartopd.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfileFragment extends Fragment {
 
     // Profile views
     private TextView txtName, txtFullName, txtAge, txtBlood;
 
-    // Temporary local user data (replace with Firebase later)
+    // Firebase
+    private FirebaseAuth mAuth;
+
+    // Temporary local user data
     private String fullName = "Johnathan Doe";
     private String age = "28";
     private String blood = "O+";
@@ -38,7 +43,9 @@ public class ProfileFragment extends Fragment {
     ) {
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        // Bind profile text views
+        mAuth = FirebaseAuth.getInstance();
+
+        // Bind views
         txtName = v.findViewById(R.id.txtName);
         txtFullName = v.findViewById(R.id.txtFullName);
         txtAge = v.findViewById(R.id.txtAge);
@@ -69,14 +76,14 @@ public class ProfileFragment extends Fragment {
         v.findViewById(R.id.optLogout)
                 .setOnClickListener(b -> showLogoutDialog());
 
-        // Settings Icon
+        // Settings
         ImageView btnSettings = v.findViewById(R.id.btnSettings);
         btnSettings.setOnClickListener(v1 -> openSettingsDialog());
 
         return v;
     }
 
-    /* ------------------ PROFILE UI UPDATE ------------------ */
+    /* ------------------ PROFILE UI ------------------ */
 
     private void updateProfileUI() {
         txtName.setText(fullName);
@@ -100,7 +107,7 @@ public class ProfileFragment extends Fragment {
         edtAge.setText(age);
         edtBlood.setText(blood);
 
-        new AlertDialog.Builder(getContext())
+        new AlertDialog.Builder(requireContext())
                 .setTitle("Edit Profile")
                 .setView(dialogView)
                 .setPositiveButton("Save", (dialog, which) -> {
@@ -119,19 +126,29 @@ public class ProfileFragment extends Fragment {
                 .show();
     }
 
-    /* ------------------ LOGOUT ------------------ */
+    /* ------------------ LOGOUT (FIXED) ------------------ */
 
     private void showLogoutDialog() {
 
-        new AlertDialog.Builder(getContext())
+        new AlertDialog.Builder(requireContext())
                 .setTitle("Logout")
                 .setMessage("Are you sure you want to logout?")
                 .setPositiveButton("Yes", (dialog, which) -> {
+
+                    // ✅ Firebase logout
+                    mAuth.signOut();
+
                     Toast.makeText(getContext(),
                             "Logged out successfully",
                             Toast.LENGTH_SHORT).show();
 
-                    // Later: clear session & navigate to login
+                    // ✅ Navigate to LoginActivity
+                    Intent intent = new Intent(requireActivity(), LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                            Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+
+                    requireActivity().finish();
                 })
                 .setNegativeButton("Cancel", null)
                 .show();
@@ -146,7 +163,7 @@ public class ProfileFragment extends Fragment {
                         "Phone: 8080402048\n\n" +
                         "Email: ritesheklare7@gmail.com";
 
-        new AlertDialog.Builder(getContext())
+        new AlertDialog.Builder(requireContext())
                 .setTitle("Help & Support")
                 .setMessage(message)
                 .setPositiveButton("OK", null)
@@ -164,7 +181,7 @@ public class ProfileFragment extends Fragment {
                 "About App"
         };
 
-        new AlertDialog.Builder(getContext())
+        new AlertDialog.Builder(requireContext())
                 .setTitle("Settings")
                 .setItems(options, (dialog, which) -> {
 
@@ -174,19 +191,16 @@ public class ProfileFragment extends Fragment {
                                     "Theme option coming soon",
                                     Toast.LENGTH_SHORT).show();
                             break;
-
                         case 1:
                             Toast.makeText(getContext(),
                                     "Notifications settings",
                                     Toast.LENGTH_SHORT).show();
                             break;
-
                         case 2:
                             Toast.makeText(getContext(),
                                     "Privacy policy will be shown",
                                     Toast.LENGTH_SHORT).show();
                             break;
-
                         case 3:
                             Toast.makeText(getContext(),
                                     "Smart OPD v1.0\nHackathon Build",
@@ -197,4 +211,3 @@ public class ProfileFragment extends Fragment {
                 .show();
     }
 }
-
