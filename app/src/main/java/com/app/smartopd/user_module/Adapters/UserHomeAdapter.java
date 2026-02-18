@@ -1,4 +1,4 @@
-package com.app.smartopd.user_module;
+package com.app.smartopd.user_module.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.smartopd.R;
+import com.app.smartopd.user_module.Models.UserHomeModel;
 
 import java.util.List;
 

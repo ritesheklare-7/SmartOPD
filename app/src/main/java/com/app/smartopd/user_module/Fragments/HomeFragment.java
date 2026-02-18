@@ -1,4 +1,4 @@
-package com.app.smartopd.user_module;
+package com.app.smartopd.user_module.Fragments;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.smartopd.R;
+import com.app.smartopd.user_module.Adapters.UserHomeAdapter;
+import com.app.smartopd.user_module.Models.UserHomeModel;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
