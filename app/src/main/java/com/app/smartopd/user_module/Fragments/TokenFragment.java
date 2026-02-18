@@ -1,4 +1,4 @@
-package com.app.smartopd.user_module;
+package com.app.smartopd.user_module.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

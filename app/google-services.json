@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1024315279489",
+    "project_id": "smartopd-6066c",
+    "storage_bucket": "smartopd-6066c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024315279489:android:ac794b4e803badf0e6a580",
+        "android_client_info": {
+          "package_name": "com.app.smartopd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQZV0DqfK9Qi176tA1OW8fEgs5Rtp7ES4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

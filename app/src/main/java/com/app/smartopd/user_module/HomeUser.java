@@ -10,6 +10,9 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
 import com.app.smartopd.R;
+import com.app.smartopd.user_module.Fragments.HomeFragment;
+import com.app.smartopd.user_module.Fragments.ProfileFragment;
+import com.app.smartopd.user_module.Fragments.TokenFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeUser extends AppCompatActivity {
