@@ -18,7 +18,6 @@
             android:id="@+id/txtName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Doctor Name"
             android:textSize="15sp"
             android:textStyle="bold"
             android:textColor="#000000"/>
@@ -27,10 +26,28 @@
             android:id="@+id/txtSpeciality"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Speciality"
             android:textSize="13sp"
             android:textColor="#6B6B6B"
             android:layout_marginTop="4dp"/>
+
+        <!-- Availability -->
+        <TextView
+            android:id="@+id/txtStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="● AVAILABLE"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#4CAF50"
+            android:layout_marginTop="6dp"/>
+
+        <!-- Book Button -->
+        <Button
+            android:id="@+id/btnBook"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:text="Book Token"
+            android:layout_marginTop="10dp"/>
 
     </LinearLayout>
 

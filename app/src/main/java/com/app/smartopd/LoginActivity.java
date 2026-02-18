@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
 //                loginUser();
                 Intent intent = new Intent(LoginActivity.this,
-                        DoctorHomeActivity.class);
+                        HomeUser.class);
                 startActivity(intent);
                 finish();
             }

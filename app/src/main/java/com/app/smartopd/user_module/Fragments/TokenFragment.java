@@ -14,15 +14,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.app.smartopd.R;
+import com.app.smartopd.user_module.utils.TokenManager;
 
 public class TokenFragment extends Fragment {
 
-    private TextView txtTokenNumber, txtNowServing, txtEstimate;
+    private TextView txtTokenNumber, txtNowServing, txtEstimate, txtStatus;
     private ProgressBar progressQueue;
 
-    public TokenFragment() {
-        // Required empty constructor
-    }
+    private TokenManager tokenManager;
+
+    public TokenFragment() {}
 
     @Nullable
     @Override
@@ -34,13 +35,16 @@ public class TokenFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_token, container, false);
 
         txtTokenNumber = view.findViewById(R.id.txtTokenNumber);
-        txtNowServing = view.findViewById(R.id.txtNowServing);
-        txtEstimate = view.findViewById(R.id.txtEstimate);
-        progressQueue = view.findViewById(R.id.progressQueue);
+        txtNowServing  = view.findViewById(R.id.txtNowServing);
+        txtEstimate    = view.findViewById(R.id.txtEstimate);
+        txtStatus      = view.findViewById(R.id.txtStatus);
+        progressQueue  = view.findViewById(R.id.progressQueue);
 
         Button btnDirections = view.findViewById(R.id.btnDirections);
         Button btnReschedule = view.findViewById(R.id.btnReschedule);
-        TextView txtRefresh = view.findViewById(R.id.txtRefresh);
+        TextView txtRefresh  = view.findViewById(R.id.txtRefresh);
+
+        tokenManager = TokenManager.getInstance();
 
         btnDirections.setOnClickListener(v ->
                 Toast.makeText(requireContext(),
@@ -48,24 +52,48 @@ public class TokenFragment extends Fragment {
 
         btnReschedule.setOnClickListener(v ->
                 Toast.makeText(requireContext(),
-                        "Reschedule clicked", Toast.LENGTH_SHORT).show());
+                        "Reschedule coming soon", Toast.LENGTH_SHORT).show());
 
-        txtRefresh.setOnClickListener(v -> refreshToken());
+        txtRefresh.setOnClickListener(v -> {
+            tokenManager.advanceQueue();
+            loadToken();
+        });
+
+        loadToken();
 
         return view;
     }
 
-    /**
-     * Dummy refresh logic
-     * Replace with API / Firebase later
-     */
-    private void refreshToken() {
-        txtTokenNumber.setText("#11");
-        txtNowServing.setText("Now Serving: #09");
-        txtEstimate.setText("Est. 10 mins remaining");
-        progressQueue.setProgress(70);
+    private void loadToken() {
 
-        Toast.makeText(requireContext(),
-                "Token status updated", Toast.LENGTH_SHORT).show();
+        if (!tokenManager.hasToken()) {
+            showNoToken();
+            return;
+        }
+
+        int myToken = tokenManager.getMyToken();
+        int nowServing = tokenManager.getNowServing();
+
+        txtTokenNumber.setText("#" + myToken);
+        txtNowServing.setText("Now Serving: #" + nowServing);
+
+        int remaining = Math.max(0, myToken - nowServing);
+        txtEstimate.setText("Est. " + (remaining * 5) + " mins remaining");
+
+        progressQueue.setMax(myToken);
+        progressQueue.setProgress(nowServing);
+
+        txtStatus.setText("ONGOING");
+        txtStatus.setTextColor(getResources().getColor(R.color.accent_green));
+    }
+
+
+    private void showNoToken() {
+        txtTokenNumber.setText("--");
+        txtNowServing.setText("No Active Token");
+        txtEstimate.setText("Book a token to get started");
+        progressQueue.setProgress(0);
+        txtStatus.setText("NO TOKEN");
+        txtStatus.setTextColor(getResources().getColor(R.color.gray));
     }
 }
