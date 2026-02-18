@@ -12,6 +12,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.app.smartopd.DoctorModule.DoctorHomeActivity;
+import com.app.smartopd.user_module.HomeUser;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etEmail, etPassword;
@@ -34,7 +37,11 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginUser();
+//                loginUser();
+                Intent intent = new Intent(LoginActivity.this,
+                        DoctorHomeActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -96,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
 
             // Go to Home Screen
             Intent intent = new Intent(LoginActivity.this,
-                    RegistrationActivity.class);
+                    HomeUser.class);
             startActivity(intent);
             finish();
 

@@ -52,4 +52,9 @@ dependencies {
 
     // Google Sign In (optional)
     implementation("com.google.android.gms:play-services-auth:21.0.0")
+    // ✅ Firebase Realtime Database (REQUIRED for your fragment)
+    implementation("com.google.firebase:firebase-database")
+
+    // ✅ Analytics (optional but recommended)
+    implementation("com.google.firebase:firebase-analytics")
 }

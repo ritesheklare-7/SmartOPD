@@ -22,5 +22,33 @@
     <!-- Divider / subtle border -->
     <color name="divider">#E3E8EE</color>
 
+    <!-- ── SmartOPD Brand Colors ── -->
+    <color name="primary_blue_light">#E3F2FD</color> <!-- Very light blue (card bg) -->
 
+    <color name="accent_green_dark">#388E3C</color>  <!-- Darker green -->
+    <color name="accent_green_light">#E8F5E9</color> <!-- Very light green (pill bg) -->
+
+    <!-- ── Status Colors ── -->
+    <color name="red">#D32F2F</color>                <!-- On Leave / Session Full / Error -->
+    <color name="red_light">#FFEBEE</color>          <!-- Light red background -->
+    <color name="orange">#F57C00</color>             <!-- Warning / Almost Full -->
+
+    <!-- ── Neutral Colors ── -->
+    <color name="light_bg">#F5F8FF</color>           <!-- Screen background -->
+    <color name="card_bg">#FFFFFF</color>
+    <color name="background">#F5F8FF</color><!-- Card surface -->
+    <color name="light_green">#E8F5E9</color>
+    <color name="light_blue">#E3F2FD</color><!-- Divider lines -->
+
+    <!-- ── Text Colors ── -->
+    <color name="text_dark">#212121</color>          <!-- Primary text -->
+    <color name="text_gray">#757575</color>          <!-- Secondary / subtitle text -->
+    <color name="text_light">#BDBDBD</color>         <!-- Hint text -->
+
+    <!-- ── Material Default (keep these) ── -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
 </resources>
