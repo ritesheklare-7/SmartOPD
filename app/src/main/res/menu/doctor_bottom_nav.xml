@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_dashboard"
+        android:icon="@android:drawable/ic_menu_today"
+        android:title="Dashboard"/>
+
+    <item
+        android:id="@+id/nav_session"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="Session"/>
+
+    <item
+        android:id="@+id/nav_leave"
+        android:icon="@android:drawable/ic_menu_my_calendar"
+        android:title="Leave"/>
+
+</menu>

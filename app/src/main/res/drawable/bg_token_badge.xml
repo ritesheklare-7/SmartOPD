@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    DRAWABLE: bg_token_badge.xml
+    Place in: res/drawable/bg_token_badge.xml
+    Used by:  tvTokenBadge in item_patient.xml
+    Shows:    Solid blue rounded pill — "Token #23"
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="#1565C0" />   <!-- SmartOPD Primary Blue -->
+
+    <corners android:radius="20dp" />   <!-- Full rounded pill shape -->
+
+</shape>
