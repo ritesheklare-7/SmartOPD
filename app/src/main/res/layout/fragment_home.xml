@@ -71,11 +71,15 @@
 
         <com.google.android.material.chip.Chip
             android:text="Cardiology"
-            app:checkedIconVisible="false"android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            app:checkedIconVisible="false"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
 
         <com.google.android.material.chip.Chip
             android:text="Pediatrics"
-            app:checkedIconVisible="false"android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            app:checkedIconVisible="false"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
     </com.google.android.material.chip.ChipGroup>
 
     <!-- TITLE -->

@@ -72,9 +72,9 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientV
 
         public PatientViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTokenBadge  = itemView.findViewById(R.id.tvTokenBadge);
+            tvTokenBadge  = itemView.findViewById(R.id.tvTokenCircle);
             tvPatientName = itemView.findViewById(R.id.tvPatientName);
-            tvStatus      = itemView.findViewById(R.id.tvStatus);
+            tvStatus      = itemView.findViewById(R.id.tvStatusBadge);
         }
     }
 }
