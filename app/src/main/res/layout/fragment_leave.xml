@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <!-- Header -->
+        <!-- ══ HEADER CARD ══ -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardLeaveHeader"
             android:layout_width="match_parent"
@@ -31,27 +31,93 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="📅  Leave Management"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="@color/white"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="148dp"
                     android:text="Patients notified automatically"
-                    android:textSize="12sp"
                     android:textColor="#CCFFFFFF"
+                    android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Emergency Leave Card -->
+        <!-- ══════════════════════════════════════ -->
+        <!--         🔴 LOGOUT CARD                -->
+        <!-- ══════════════════════════════════════ -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/cardLeaveHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <!-- Doctor Name Display -->
+                <TextView
+                    android:id="@+id/tvLoggedInAs"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Logged in as"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_gray"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btnLogout"/>
+
+                <TextView
+                    android:id="@+id/tvDoctorLoggedName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Dr. Loading..."
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_dark"
+                    android:layout_marginTop="2dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvLoggedInAs"
+                    app:layout_constraintEnd_toStartOf="@id/btnLogout"/>
+
+                <!-- Logout Button -->
+                <Button
+                    android:id="@+id/btnLogout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Logout"
+                    android:textColor="@color/red"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/red_light"
+                    app:cornerRadius="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ══ EMERGENCY LEAVE CARD ══ -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardEmergency"
             android:layout_width="match_parent"
@@ -60,7 +126,7 @@
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp"
             app:cardBackgroundColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/cardLeaveHeader"
+            app:layout_constraintTop_toBottomOf="@id/cardLogout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
@@ -105,7 +171,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Planned Leave Card -->
+        <!-- ══ PLANNED LEAVE CARD ══ -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardPlanned"
             android:layout_width="match_parent"
@@ -145,7 +211,6 @@
                     app:layout_constraintTop_toBottomOf="@id/tvPlannedTitle"
                     app:layout_constraintStart_toStartOf="parent"/>
 
-                <!-- Date Picker Button -->
                 <Button
                     android:id="@+id/btnPickDate"
                     android:layout_width="match_parent"
@@ -160,7 +225,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
-                <!-- Selected Date Display -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardSelectedDate"
                     android:layout_width="match_parent"
@@ -206,7 +270,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Submit Button -->
+        <!-- ══ SUBMIT BUTTON ══ -->
         <Button
             android:id="@+id/btnSubmitLeave"
             android:layout_width="match_parent"
