@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
 import com.app.smartopd.R;
+import com.app.smartopd.user_module.Fragments.BotFragment;
 import com.app.smartopd.user_module.Fragments.HomeFragment;
 import com.app.smartopd.user_module.Fragments.ProfileFragment;
 import com.app.smartopd.user_module.Fragments.TokenFragment;
@@ -22,6 +23,7 @@ public class HomeUser extends AppCompatActivity {
     Fragment homeFragment;
     Fragment tokenFragment;
     Fragment profileFragment;
+    Fragment botFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class HomeUser extends AppCompatActivity {
         homeFragment = new HomeFragment();
         tokenFragment = new TokenFragment();
         profileFragment = new ProfileFragment();
+        botFragment = new BotFragment();
 
         loadFragment(homeFragment);
 
@@ -66,6 +69,11 @@ public class HomeUser extends AppCompatActivity {
 
             if (item.getItemId() == R.id.nav_profile) {
                 loadFragment(profileFragment);
+                return true;
+            }
+
+            if (item.getItemId() == R.id.nav_bot) {
+                loadFragment(botFragment);
                 return true;
             }
 

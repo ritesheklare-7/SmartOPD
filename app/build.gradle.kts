@@ -58,4 +58,7 @@ dependencies {
 
     // ✅ Analytics (optional but recommended)
     implementation("com.google.firebase:firebase-analytics")
+    implementation ("com.squareup.okhttp3:okhttp:4.9.3")
+    implementation ("com.squareup.okhttp3:okhttp:4.9.3")
+    implementation ("org.json:json:20220320")
 }
