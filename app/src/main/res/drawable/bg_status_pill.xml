@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    DRAWABLE: bg_status_pill.xml
+    Place in: res/drawable/bg_status_pill.xml
+    Used by:  tvStatus in item_patient.xml
+    Shows:    Light green bordered rounded pill — "Waiting"
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="#E8F5E9" />   <!-- Very light green background -->
+
+    <stroke
+        android:width="1dp"
+        android:color="#4CAF50" />      <!-- Green border -->
+
+    <corners android:radius="20dp" />   <!-- Rounded pill -->
+
+</shape>
