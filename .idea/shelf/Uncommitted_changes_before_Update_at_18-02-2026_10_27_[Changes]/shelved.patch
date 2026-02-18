@@ -1,0 +1,1033 @@
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n        android:fullBackupContent=\"@xml/backup_rules\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.SmartOPD\"\r\n        tools:targetApi=\"31\">\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 65bc505ed14cd37a7a5cdf24b3af1dd96e41d905)
++++ b/app/src/main/AndroidManifest.xml	(date 1771386785470)
+@@ -13,6 +13,9 @@
+         android:theme="@style/Theme.SmartOPD"
+         tools:targetApi="31">
+         <activity
++            android:name=".user_module.HomeUser"
++            android:exported="false" />
++        <activity
+             android:name=".MainActivity"
+             android:exported="true">
+             <intent-filter>
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"VcsDirectoryMappings\" defaultProject=\"true\" />\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+--- a/.idea/vcs.xml	(revision 65bc505ed14cd37a7a5cdf24b3af1dd96e41d905)
++++ b/.idea/vcs.xml	(date 1771386675269)
+@@ -1,4 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="VcsDirectoryMappings" defaultProject="true" />
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
+ </project>
+\ No newline at end of file
+Index: app/src/main/java/com/app/smartopd/user_module/TokenFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/app/smartopd/user_module/TokenFragment.java b/app/src/main/java/com/app/smartopd/user_module/TokenFragment.java
+new file mode 100644
+--- /dev/null	(date 1771390603247)
++++ b/app/src/main/java/com/app/smartopd/user_module/TokenFragment.java	(date 1771390603247)
+@@ -0,0 +1,71 @@
++package com.app.smartopd.user_module;
++
++import android.os.Bundle;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.Button;
++import android.widget.ProgressBar;
++import android.widget.TextView;
++import android.widget.Toast;
++
++import androidx.annotation.NonNull;
++import androidx.annotation.Nullable;
++import androidx.fragment.app.Fragment;
++
++import com.app.smartopd.R;
++
++public class TokenFragment extends Fragment {
++
++    private TextView txtTokenNumber, txtNowServing, txtEstimate;
++    private ProgressBar progressQueue;
++
++    public TokenFragment() {
++        // Required empty constructor
++    }
++
++    @Nullable
++    @Override
++    public View onCreateView(
++            @NonNull LayoutInflater inflater,
++            @Nullable ViewGroup container,
++            @Nullable Bundle savedInstanceState
++    ) {
++        View view = inflater.inflate(R.layout.fragment_token, container, false);
++
++        txtTokenNumber = view.findViewById(R.id.txtTokenNumber);
++        txtNowServing = view.findViewById(R.id.txtNowServing);
++        txtEstimate = view.findViewById(R.id.txtEstimate);
++        progressQueue = view.findViewById(R.id.progressQueue);
++
++        Button btnDirections = view.findViewById(R.id.btnDirections);
++        Button btnReschedule = view.findViewById(R.id.btnReschedule);
++        TextView txtRefresh = view.findViewById(R.id.txtRefresh);
++
++        btnDirections.setOnClickListener(v ->
++                Toast.makeText(requireContext(),
++                        "Opening directions...", Toast.LENGTH_SHORT).show());
++
++        btnReschedule.setOnClickListener(v ->
++                Toast.makeText(requireContext(),
++                        "Reschedule clicked", Toast.LENGTH_SHORT).show());
++
++        txtRefresh.setOnClickListener(v -> refreshToken());
++
++        return view;
++    }
++
++    /**
++     * Dummy refresh logic
++     * Replace with API / Firebase later
++     */
++    private void refreshToken() {
++        txtTokenNumber.setText("#11");
++        txtNowServing.setText("Now Serving: #09");
++        txtEstimate.setText("Est. 10 mins remaining");
++        progressQueue.setProgress(70);
++
++        Toast.makeText(requireContext(),
++                "Token status updated", Toast.LENGTH_SHORT).show();
++    }
++}
+Index: app/src/main/res/layout/fragment_token.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_token.xml b/app/src/main/res/layout/fragment_token.xml
+new file mode 100644
+--- /dev/null	(date 1771390583048)
++++ b/app/src/main/res/layout/fragment_token.xml	(date 1771390583048)
+@@ -0,0 +1,168 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:background="#F5F7FB">
++
++    <!-- Greeting -->
++    <TextView
++        android:id="@+id/txtGreeting"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Good Morning,"
++        android:textSize="14sp"
++        android:textColor="#6B6B6B"
++        android:layout_marginStart="16dp"
++        android:layout_marginTop="16dp"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintStart_toStartOf="parent"/>
++
++    <TextView
++        android:id="@+id/txtUserName"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Alexander"
++        android:textSize="18sp"
++        android:textStyle="bold"
++        android:textColor="#000000"
++        app:layout_constraintTop_toBottomOf="@id/txtGreeting"
++        app:layout_constraintStart_toStartOf="@id/txtGreeting"/>
++
++    <!-- Hospital Card -->
++    <androidx.cardview.widget.CardView
++        android:id="@+id/cardHospital"
++        android:layout_width="0dp"
++        android:layout_height="wrap_content"
++        android:layout_margin="16dp"
++        app:cardCornerRadius="16dp"
++        app:cardElevation="4dp"
++        app:layout_constraintTop_toBottomOf="@id/txtUserName"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent">
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:orientation="vertical"
++            android:padding="16dp">
++
++            <TextView
++                android:id="@+id/txtHospitalName"
++                android:text="City General Hospital"
++                android:textSize="16sp"
++                android:textStyle="bold"
++                android:textColor="#000000"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"/>
++
++            <TextView
++                android:id="@+id/txtDoctor"
++                android:text="Cardiology Dept · Dr. Sarah Jenkins"
++                android:textSize="13sp"
++                android:textColor="#6B6B6B"
++                android:layout_marginTop="4dp"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"/>
++        </LinearLayout>
++    </androidx.cardview.widget.CardView>
++
++    <!-- Token Status Card -->
++    <androidx.cardview.widget.CardView
++        android:id="@+id/cardToken"
++        android:layout_width="0dp"
++        android:layout_height="wrap_content"
++        android:layout_marginHorizontal="16dp"
++        app:cardCornerRadius="16dp"
++        app:cardElevation="4dp"
++        app:layout_constraintTop_toBottomOf="@id/cardHospital"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent">
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:orientation="vertical"
++            android:padding="16dp">
++
++            <TextView
++                android:id="@+id/txtStatus"
++                android:text="ONGOING"
++                android:textColor="#4CAF50"
++                android:textStyle="bold"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"/>
++
++            <TextView
++                android:id="@+id/txtTokenNumber"
++                android:text="#12"
++                android:textSize="32sp"
++                android:textStyle="bold"
++                android:layout_marginTop="8dp"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"/>
++
++            <TextView
++                android:id="@+id/txtNowServing"
++                android:text="Now Serving: #08"
++                android:textColor="#1E88E5"
++                android:layout_marginTop="4dp"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"/>
++
++            <ProgressBar
++                android:id="@+id/progressQueue"
++                style="?android:attr/progressBarStyleHorizontal"
++                android:layout_width="match_parent"
++                android:layout_height="6dp"
++                android:layout_marginTop="12dp"
++                android:progress="60"/>
++
++            <TextView
++                android:id="@+id/txtEstimate"
++                android:text="Est. 15 mins remaining"
++                android:textSize="13sp"
++                android:textColor="#6B6B6B"
++                android:layout_marginTop="8dp"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"/>
++
++            <LinearLayout
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:orientation="horizontal"
++                android:layout_marginTop="16dp">
++
++                <Button
++                    android:id="@+id/btnDirections"
++                    android:layout_width="0dp"
++                    android:layout_weight="1"
++                    android:layout_height="45dp"
++                    android:text="Directions"/>
++
++                <Button
++                    android:id="@+id/btnReschedule"
++                    android:layout_width="0dp"
++                    android:layout_weight="1"
++                    android:layout_height="45dp"
++                    android:layout_marginStart="12dp"
++                    android:text="Reschedule"/>
++            </LinearLayout>
++
++        </LinearLayout>
++    </androidx.cardview.widget.CardView>
++
++    <!-- Refresh -->
++    <TextView
++        android:id="@+id/txtRefresh"
++        android:text="Refresh"
++        android:textColor="#1E88E5"
++        android:layout_marginTop="12dp"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        app:layout_constraintTop_toBottomOf="@id/cardToken"
++        app:layout_constraintEnd_toEndOf="parent"
++        android:layout_marginEnd="16dp"/>
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+Index: app/src/main/java/com/app/smartopd/user_module/ProfileFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/app/smartopd/user_module/ProfileFragment.java b/app/src/main/java/com/app/smartopd/user_module/ProfileFragment.java
+new file mode 100644
+--- /dev/null	(date 1771388757599)
++++ b/app/src/main/java/com/app/smartopd/user_module/ProfileFragment.java	(date 1771388757599)
+@@ -0,0 +1,66 @@
++package com.app.smartopd.user_module;
++
++import android.os.Bundle;
++
++import androidx.fragment.app.Fragment;
++
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++
++import com.app.smartopd.R;
++
++/**
++ * A simple {@link Fragment} subclass.
++ * Use the {@link ProfileFragment#newInstance} factory method to
++ * create an instance of this fragment.
++ */
++public class ProfileFragment extends Fragment {
++
++    // TODO: Rename parameter arguments, choose names that match
++    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
++    private static final String ARG_PARAM1 = "param1";
++    private static final String ARG_PARAM2 = "param2";
++
++    // TODO: Rename and change types of parameters
++    private String mParam1;
++    private String mParam2;
++
++    public ProfileFragment() {
++        // Required empty public constructor
++    }
++
++    /**
++     * Use this factory method to create a new instance of
++     * this fragment using the provided parameters.
++     *
++     * @param param1 Parameter 1.
++     * @param param2 Parameter 2.
++     * @return A new instance of fragment ProfileFragment.
++     */
++    // TODO: Rename and change types and number of parameters
++    public static ProfileFragment newInstance(String param1, String param2) {
++        ProfileFragment fragment = new ProfileFragment();
++        Bundle args = new Bundle();
++        args.putString(ARG_PARAM1, param1);
++        args.putString(ARG_PARAM2, param2);
++        fragment.setArguments(args);
++        return fragment;
++    }
++
++    @Override
++    public void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        if (getArguments() != null) {
++            mParam1 = getArguments().getString(ARG_PARAM1);
++            mParam2 = getArguments().getString(ARG_PARAM2);
++        }
++    }
++
++    @Override
++    public View onCreateView(LayoutInflater inflater, ViewGroup container,
++                             Bundle savedInstanceState) {
++        // Inflate the layout for this fragment
++        return inflater.inflate(R.layout.fragment_profile, container, false);
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_profile.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_profile.xml b/app/src/main/res/layout/fragment_profile.xml
+new file mode 100644
+--- /dev/null	(date 1771388757542)
++++ b/app/src/main/res/layout/fragment_profile.xml	(date 1771388757542)
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="utf-8"?>
++<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".user_module.ProfileFragment">
++
++    <!-- TODO: Update blank fragment layout -->
++    <TextView
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:text="@string/hello_blank_fragment" />
++
++</FrameLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/app/smartopd/user_module/UserHomeModel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/app/smartopd/user_module/UserHomeModel.java b/app/src/main/java/com/app/smartopd/user_module/UserHomeModel.java
+new file mode 100644
+--- /dev/null	(date 1771390159609)
++++ b/app/src/main/java/com/app/smartopd/user_module/UserHomeModel.java	(date 1771390159609)
+@@ -0,0 +1,22 @@
++package com.app.smartopd.user_module;
++
++public class UserHomeModel {
++
++    private String name;
++    private String speciality;
++
++    // Required constructor
++    public UserHomeModel(String name, String speciality) {
++        this.name = name;
++        this.speciality = speciality;
++    }
++
++    // Getter methods
++    public String getName() {
++        return name;
++    }
++
++    public String getSpeciality() {
++        return speciality;
++    }
++}
+Index: app/src/main/java/com/app/smartopd/user_module/UserHomeAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/app/smartopd/user_module/UserHomeAdapter.java b/app/src/main/java/com/app/smartopd/user_module/UserHomeAdapter.java
+new file mode 100644
+--- /dev/null	(date 1771390213543)
++++ b/app/src/main/java/com/app/smartopd/user_module/UserHomeAdapter.java	(date 1771390213543)
+@@ -0,0 +1,61 @@
++package com.app.smartopd.user_module;
++
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.TextView;
++
++import androidx.annotation.NonNull;
++import androidx.recyclerview.widget.RecyclerView;
++
++import com.app.smartopd.R;
++
++import java.util.List;
++
++public class UserHomeAdapter
++        extends RecyclerView.Adapter<UserHomeAdapter.UserViewHolder> {
++
++    private final List<UserHomeModel> userList;
++
++    public UserHomeAdapter(List<UserHomeModel> userList) {
++        this.userList = userList;
++    }
++
++    @NonNull
++    @Override
++    public UserViewHolder onCreateViewHolder(
++            @NonNull ViewGroup parent,
++            int viewType
++    ) {
++        View view = LayoutInflater.from(parent.getContext())
++                .inflate(R.layout.item_user_home, parent, false);
++        return new UserViewHolder(view);
++    }
++
++    @Override
++    public void onBindViewHolder(
++            @NonNull UserViewHolder holder,
++            int position
++    ) {
++        UserHomeModel model = userList.get(position);
++
++        holder.txtName.setText(model.getName());
++        holder.txtSpeciality.setText(model.getSpeciality());
++    }
++
++    @Override
++    public int getItemCount() {
++        return userList.size();
++    }
++
++    static class UserViewHolder extends RecyclerView.ViewHolder {
++
++        TextView txtName, txtSpeciality;
++
++        public UserViewHolder(@NonNull View itemView) {
++            super(itemView);
++            txtName = itemView.findViewById(R.id.txtName);
++            txtSpeciality = itemView.findViewById(R.id.txtSpeciality);
++        }
++    }
++}
+Index: app/src/main/java/com/app/smartopd/user_module/HomeUser.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/app/smartopd/user_module/HomeUser.java b/app/src/main/java/com/app/smartopd/user_module/HomeUser.java
+new file mode 100644
+--- /dev/null	(date 1771388883340)
++++ b/app/src/main/java/com/app/smartopd/user_module/HomeUser.java	(date 1771388883340)
+@@ -0,0 +1,79 @@
++package com.app.smartopd.user_module;
++
++import android.os.Bundle;
++
++import androidx.activity.EdgeToEdge;
++import androidx.appcompat.app.AppCompatActivity;
++import androidx.core.graphics.Insets;
++import androidx.core.view.ViewCompat;
++import androidx.core.view.WindowInsetsCompat;
++import androidx.fragment.app.Fragment;
++
++import com.app.smartopd.R;
++import com.google.android.material.bottomnavigation.BottomNavigationView;
++
++public class HomeUser extends AppCompatActivity {
++
++    BottomNavigationView bottomNavigation;
++
++    Fragment homeFragment;
++    Fragment tokenFragment;
++    Fragment profileFragment;
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++
++        EdgeToEdge.enable(this);
++        setContentView(R.layout.activity_home_user);
++
++        ViewCompat.setOnApplyWindowInsetsListener(
++                findViewById(R.id.homeRoot),   // ✅ FIXED HERE
++                (v, insets) -> {
++                    Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
++                    v.setPadding(
++                            systemBars.left,
++                            systemBars.top,
++                            systemBars.right,
++                            systemBars.bottom
++                    );
++                    return insets;
++                }
++        );
++
++        bottomNavigation = findViewById(R.id.bottomNavigation);
++
++        homeFragment = new HomeFragment();
++        tokenFragment = new TokenFragment();
++        profileFragment = new ProfileFragment();
++
++        loadFragment(homeFragment);
++
++        bottomNavigation.setOnItemSelectedListener(item -> {
++
++            if (item.getItemId() == R.id.nav_home) {
++                loadFragment(homeFragment);
++                return true;
++            }
++
++            if (item.getItemId() == R.id.nav_token) {
++                loadFragment(tokenFragment);
++                return true;
++            }
++
++            if (item.getItemId() == R.id.nav_profile) {
++                loadFragment(profileFragment);
++                return true;
++            }
++
++            return false;
++        });
++    }
++
++    private void loadFragment(Fragment fragment) {
++        getSupportFragmentManager()
++                .beginTransaction()
++                .replace(R.id.fragment_container, fragment)
++                .commit();
++    }
++}
+Index: app/src/main/res/layout/item_user_home.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/item_user_home.xml b/app/src/main/res/layout/item_user_home.xml
+new file mode 100644
+--- /dev/null	(date 1771390258660)
++++ b/app/src/main/res/layout/item_user_home.xml	(date 1771390258660)
+@@ -0,0 +1,37 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.cardview.widget.CardView
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:layout_width="match_parent"
++    android:layout_height="wrap_content"
++    android:layout_marginBottom="12dp"
++    app:cardCornerRadius="14dp"
++    app:cardElevation="3dp">
++
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:orientation="vertical"
++        android:padding="16dp">
++
++        <TextView
++            android:id="@+id/txtName"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="Doctor Name"
++            android:textSize="15sp"
++            android:textStyle="bold"
++            android:textColor="#000000"/>
++
++        <TextView
++            android:id="@+id/txtSpeciality"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="Speciality"
++            android:textSize="13sp"
++            android:textColor="#6B6B6B"
++            android:layout_marginTop="4dp"/>
++
++    </LinearLayout>
++
++</androidx.cardview.widget.CardView>
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\">SmartOPD</string>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml	(revision 65bc505ed14cd37a7a5cdf24b3af1dd96e41d905)
++++ b/app/src/main/res/values/strings.xml	(date 1771388757534)
+@@ -1,3 +1,5 @@
+ <resources>
+     <string name="app_name">SmartOPD</string>
++    <!-- TODO: Remove or change this placeholder text -->
++    <string name="hello_blank_fragment">Hello blank fragment</string>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_home_user.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_home_user.xml b/app/src/main/res/layout/activity_home_user.xml
+new file mode 100644
+--- /dev/null	(date 1771389506345)
++++ b/app/src/main/res/layout/activity_home_user.xml	(date 1771389506345)
+@@ -0,0 +1,35 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:id="@+id/homeRoot"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:background="#F5F7FB">
++
++    <!-- Fragment Container -->
++    <androidx.fragment.app.FragmentContainerView
++        android:id="@+id/fragment_container"
++        android:layout_width="0dp"
++        android:layout_height="0dp"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent" />
++
++    <!-- Bottom Navigation -->
++    <com.google.android.material.bottomnavigation.BottomNavigationView
++        android:id="@+id/bottomNavigation"
++        android:layout_width="0dp"
++        android:layout_height="wrap_content"
++        android:background="@android:color/white"
++        app:itemIconTint="#8A8A8A"
++        app:itemTextColor="#8A8A8A"
++        app:labelVisibilityMode="labeled"
++        app:itemRippleColor="#E0E0E0"
++        app:menu="@menu/bottom_nav_menu"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"/>
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+Index: app/src/main/res/drawable/search_bg.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/search_bg.xml b/app/src/main/res/drawable/search_bg.xml
+new file mode 100644
+--- /dev/null	(date 1771389375902)
++++ b/app/src/main/res/drawable/search_bg.xml	(date 1771389375902)
+@@ -0,0 +1,23 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android"
++    android:shape="rectangle">
++
++    <!-- Background color -->
++    <solid android:color="@android:color/white" />
++
++    <!-- Rounded corners -->
++    <corners android:radius="18dp" />
++
++    <!-- Light border -->
++    <stroke
++        android:width="1dp"
++        android:color="#E0E6F0" />
++
++    <!-- Internal padding -->
++    <padding
++        android:left="12dp"
++        android:top="8dp"
++        android:right="12dp"
++        android:bottom="8dp" />
++
++</shape>
+Index: app/src/main/res/menu/bottom_nav_menu.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/menu/bottom_nav_menu.xml b/app/src/main/res/menu/bottom_nav_menu.xml
+new file mode 100644
+--- /dev/null	(date 1771387663051)
++++ b/app/src/main/res/menu/bottom_nav_menu.xml	(date 1771387663051)
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="utf-8"?>
++<menu xmlns:android="http://schemas.android.com/apk/res/android">
++
++    <item
++        android:id="@+id/nav_home"
++        android:icon="@drawable/ic_home"
++        android:title="Home"/>
++
++    <item
++        android:id="@+id/nav_token"
++        android:icon="@drawable/ic_ticket"
++        android:title="My Token"/>
++
++    <item
++        android:id="@+id/nav_profile"
++        android:icon="@drawable/ic_profile"
++        android:title="Profile"/>
++
++</menu>
+Index: app/src/main/java/com/app/smartopd/user_module/HomeFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/app/smartopd/user_module/HomeFragment.java b/app/src/main/java/com/app/smartopd/user_module/HomeFragment.java
+new file mode 100644
+--- /dev/null	(date 1771390005507)
++++ b/app/src/main/java/com/app/smartopd/user_module/HomeFragment.java	(date 1771390005507)
+@@ -0,0 +1,146 @@
++package com.app.smartopd.user_module;
++
++import android.os.Bundle;
++import android.text.TextUtils;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++
++import androidx.annotation.NonNull;
++import androidx.annotation.Nullable;
++import androidx.appcompat.widget.SearchView;
++import androidx.fragment.app.Fragment;
++import androidx.recyclerview.widget.LinearLayoutManager;
++import androidx.recyclerview.widget.RecyclerView;
++
++import com.app.smartopd.R;
++import com.google.android.material.chip.Chip;
++import com.google.android.material.chip.ChipGroup;
++
++import java.util.ArrayList;
++import java.util.List;
++
++public class HomeFragment extends Fragment {
++
++    private RecyclerView recyclerDoctors;
++    private SearchView searchDoctors;
++    private ChipGroup chipGroup;
++
++    // USER MODULE adapter & model
++    private UserHomeAdapter userHomeAdapter;
++    private final List<UserHomeModel> fullList = new ArrayList<>();
++    private final List<UserHomeModel> filteredList = new ArrayList<>();
++
++    public HomeFragment() {
++        // Required empty public constructor
++    }
++
++    @Nullable
++    @Override
++    public View onCreateView(
++            @NonNull LayoutInflater inflater,
++            @Nullable ViewGroup container,
++            @Nullable Bundle savedInstanceState
++    ) {
++        View view = inflater.inflate(R.layout.fragment_home, container, false);
++
++        // Bind views
++        recyclerDoctors = view.findViewById(R.id.recyclerDoctors);
++        searchDoctors = view.findViewById(R.id.searchDoctors);
++        chipGroup = view.findViewById(R.id.chipGroup);
++
++        // RecyclerView setup
++        recyclerDoctors.setLayoutManager(new LinearLayoutManager(requireContext()));
++
++        // Load data
++        loadHomeData();
++
++        filteredList.addAll(fullList);
++
++        userHomeAdapter = new UserHomeAdapter(filteredList);
++        recyclerDoctors.setAdapter(userHomeAdapter);
++
++        setupSearch();
++        setupChipFilter();
++
++        return view;
++    }
++
++    /**
++     * Load User Home data
++     * Replace later with API / Firebase
++     */
++    private void loadHomeData() {
++        fullList.clear();
++
++        fullList.add(new UserHomeModel("Dr. Aris Thorne", "Cardiology"));
++        fullList.add(new UserHomeModel("Dr. Sarah Jenkins", "Pediatrics"));
++        fullList.add(new UserHomeModel("Dr. Marcus Lee", "Neurology"));
++        fullList.add(new UserHomeModel("Dr. Elena Rodriguez", "Dermatology"));
++    }
++
++    /**
++     * Search filtering
++     */
++    private void setupSearch() {
++        searchDoctors.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
++            @Override
++            public boolean onQueryTextSubmit(String query) {
++                filterData(query, getSelectedChipText());
++                return true;
++            }
++
++            @Override
++            public boolean onQueryTextChange(String newText) {
++                filterData(newText, getSelectedChipText());
++                return true;
++            }
++        });
++    }
++
++    /**
++     * Chip filter
++     */
++    private void setupChipFilter() {
++        chipGroup.setOnCheckedChangeListener((group, checkedId) ->
++                filterData(searchDoctors.getQuery().toString(), getSelectedChipText())
++        );
++    }
++
++    /**
++     * Core filter logic
++     */
++    private void filterData(String query, String category) {
++        filteredList.clear();
++
++        for (UserHomeModel item : fullList) {
++
++            boolean matchesSearch =
++                    TextUtils.isEmpty(query)
++                            || item.getName().toLowerCase().contains(query.toLowerCase())
++                            || item.getSpeciality().toLowerCase().contains(query.toLowerCase());
++
++            boolean matchesCategory =
++                    category.equals("All")
++                            || item.getSpeciality().equalsIgnoreCase(category);
++
++            if (matchesSearch && matchesCategory) {
++                filteredList.add(item);
++            }
++        }
++
++        userHomeAdapter.notifyDataSetChanged();
++    }
++
++    /**
++     * Get selected chip text
++     */
++    private String getSelectedChipText() {
++        int checkedId = chipGroup.getCheckedChipId();
++        if (checkedId != View.NO_ID) {
++            Chip chip = chipGroup.findViewById(checkedId);
++            return chip.getText().toString();
++        }
++        return "All";
++    }
++}
+Index: app/src/main/res/layout/fragment_home.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_home.xml b/app/src/main/res/layout/fragment_home.xml
+new file mode 100644
+--- /dev/null	(date 1771389267337)
++++ b/app/src/main/res/layout/fragment_home.xml	(date 1771389267337)
+@@ -0,0 +1,104 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:id="@+id/homeFragmentRoot"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:background="#F5F7FB">
++
++    <!-- HEADER CARD -->
++    <androidx.cardview.widget.CardView
++        android:id="@+id/headerCard"
++        android:layout_width="0dp"
++        android:layout_height="170dp"
++        android:layout_margin="16dp"
++        app:cardCornerRadius="22dp"
++        app:cardElevation="4dp"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        android:backgroundTint="#163C7D">
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="match_parent"
++            android:orientation="vertical"
++            android:padding="20dp">
++
++            <TextView
++                android:layout_height="wrap_content" android:layout_width="wrap_content"
++                android:text="Smart OPD"
++                android:textColor="@android:color/white"
++                android:textSize="20sp"
++                android:textStyle="bold"/>
++
++            <TextView
++                android:layout_height="wrap_content" android:layout_width="wrap_content"
++                android:text="Healthcare made simple"
++                android:textColor="#DDE6F5"
++                android:textSize="13sp"
++                android:layout_marginTop="4dp"/>
++
++            <androidx.appcompat.widget.SearchView
++                android:id="@+id/searchDoctors"
++                android:layout_width="match_parent"
++                android:layout_height="45dp"
++                android:layout_marginTop="16dp"
++                android:background="@drawable/search_bg"
++                android:queryHint="Search for doctors, clinics, or specialties"
++                app:iconifiedByDefault="false"/>
++        </LinearLayout>
++    </androidx.cardview.widget.CardView>
++
++    <!-- CATEGORY CHIPS -->
++    <com.google.android.material.chip.ChipGroup
++        android:id="@+id/chipGroup"
++        android:layout_width="0dp"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="16dp"
++        android:layout_marginEnd="16dp"
++        android:layout_marginTop="8dp"
++        app:singleSelection="true"
++        app:layout_constraintTop_toBottomOf="@id/headerCard"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent">
++
++        <com.google.android.material.chip.Chip
++            android:text="All"
++            app:checkedIconVisible="false"
++            android:checked="true" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
++
++        <com.google.android.material.chip.Chip
++            android:text="Cardiology"
++            app:checkedIconVisible="false"android:layout_height="wrap_content" android:layout_width="wrap_content"/>
++
++        <com.google.android.material.chip.Chip
++            android:text="Pediatrics"
++            app:checkedIconVisible="false"android:layout_height="wrap_content" android:layout_width="wrap_content"/>
++    </com.google.android.material.chip.ChipGroup>
++
++    <!-- TITLE -->
++    <TextView
++        android:id="@+id/txtAvailable"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Available Doctors"
++        android:textStyle="bold"
++        android:textSize="16sp"
++        android:layout_marginStart="16dp"
++        android:layout_marginTop="12dp"
++        app:layout_constraintTop_toBottomOf="@id/chipGroup"
++        app:layout_constraintStart_toStartOf="parent"/>
++
++    <!-- DOCTOR LIST -->
++    <androidx.recyclerview.widget.RecyclerView
++        android:id="@+id/recyclerDoctors"
++        android:layout_width="0dp"
++        android:layout_height="0dp"
++        android:layout_margin="16dp"
++        app:layout_constraintTop_toBottomOf="@id/txtAvailable"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"/>
++</androidx.constraintlayout.widget.ConstraintLayout>
