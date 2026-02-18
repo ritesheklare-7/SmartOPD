@@ -2,4 +2,30 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#D7061E</color>
+    <color name="green">#85BF8B</color>
+    <color name="light_green">#ACC4B7</color>
+    <color name="dark_green">#08735B</color>
+    <color name="mint_green">#D6EDDA</color>
+    <color name="shadowed_green">#1C2529</color>
+    <color name="light_white">#E6E3E3</color>
+    <!-- Brand Primary (Logo Blue) -->
+    <color name="primary_blue">#2E7CC1</color>
+
+    <!-- Primary Dark (status bar / pressed state) -->
+    <color name="primary_blue_dark">#1F5F99</color>
+
+    <!-- Medical Green Accent -->
+    <color name="accent_green">#7BC62D</color>
+
+    <!-- Main Background -->
+    <color name="app_background">#F6F9FC</color>
+
+    <!-- Card / Surface -->
+    <color name="surface_white">#FFFFFFFF</color>
+
+    <!-- Divider / subtle border -->
+    <color name="divider">#E3E8EE</color>
+
+
 </resources>
