@@ -1,0 +1,371 @@
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<resources>\r\n    <color name=\"black\">#FF000000</color>\r\n    <color name=\"white\">#FFFFFFFF</color>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/colors.xml b/app/src/main/res/values/colors.xml
+--- a/app/src/main/res/values/colors.xml	(revision 65bc505ed14cd37a7a5cdf24b3af1dd96e41d905)
++++ b/app/src/main/res/values/colors.xml	(date 1771387680443)
+@@ -2,4 +2,5 @@
+ <resources>
+     <color name="black">#FF000000</color>
+     <color name="white">#FFFFFFFF</color>
++    <color name="primary_green">#253175</color>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n        android:fullBackupContent=\"@xml/backup_rules\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.SmartOPD\"\r\n        tools:targetApi=\"31\">\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 65bc505ed14cd37a7a5cdf24b3af1dd96e41d905)
++++ b/app/src/main/AndroidManifest.xml	(date 1771388716369)
+@@ -6,14 +6,14 @@
+         android:allowBackup="true"
+         android:dataExtractionRules="@xml/data_extraction_rules"
+         android:fullBackupContent="@xml/backup_rules"
+-        android:icon="@mipmap/ic_launcher"
++        android:icon="@drawable/smartopd_logo"
+         android:label="@string/app_name"
+         android:roundIcon="@mipmap/ic_launcher_round"
+         android:supportsRtl="true"
+         android:theme="@style/Theme.SmartOPD"
+         tools:targetApi="31">
+         <activity
+-            android:name=".MainActivity"
++            android:name=".SplashActivity"
+             android:exported="true">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+Index: app/src/main/java/com/app/smartopd/MainActivity.java
+===================================================================
+diff --git a/app/src/main/java/com/app/smartopd/MainActivity.java b/app/src/main/java/com/app/smartopd/MainActivity.java
+deleted file mode 100644
+--- a/app/src/main/java/com/app/smartopd/MainActivity.java	(revision 65bc505ed14cd37a7a5cdf24b3af1dd96e41d905)
++++ /dev/null	(revision 65bc505ed14cd37a7a5cdf24b3af1dd96e41d905)
+@@ -1,24 +0,0 @@
+-package com.app.smartopd;
+-
+-import android.os.Bundle;
+-
+-import androidx.activity.EdgeToEdge;
+-import androidx.appcompat.app.AppCompatActivity;
+-import androidx.core.graphics.Insets;
+-import androidx.core.view.ViewCompat;
+-import androidx.core.view.WindowInsetsCompat;
+-
+-public class MainActivity extends AppCompatActivity {
+-
+-    @Override
+-    protected void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        EdgeToEdge.enable(this);
+-        setContentView(R.layout.activity_main);
+-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+-            return insets;
+-        });
+-    }
+-}
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_main.xml
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+deleted file mode 100644
+--- a/app/src/main/res/layout/activity_main.xml	(revision 65bc505ed14cd37a7a5cdf24b3af1dd96e41d905)
++++ /dev/null	(revision 65bc505ed14cd37a7a5cdf24b3af1dd96e41d905)
+@@ -1,19 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:id="@+id/main"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context=".MainActivity">
+-
+-    <TextView
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:text="Hello World!"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    alias(libs.plugins.android.application)\r\n}\r\n\r\nandroid {\r\n    namespace = \"com.app.smartopd\"\r\n    compileSdk = 35\r\n\r\n    defaultConfig {\r\n        applicationId = \"com.app.smartopd\"\r\n        minSdk = 24\r\n        targetSdk = 35\r\n        versionCode = 1\r\n        versionName = \"1.0\"\r\n\r\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            isMinifyEnabled = false\r\n            proguardFiles(\r\n                getDefaultProguardFile(\"proguard-android-optimize.txt\"),\r\n                \"proguard-rules.pro\"\r\n            )\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility = JavaVersion.VERSION_11\r\n        targetCompatibility = JavaVersion.VERSION_11\r\n    }\r\n}\r\n\r\ndependencies {\r\n\r\n    implementation(libs.appcompat)\r\n    implementation(libs.material)\r\n    implementation(libs.activity)\r\n    implementation(libs.constraintlayout)\r\n    testImplementation(libs.junit)\r\n    androidTestImplementation(libs.ext.junit)\r\n    androidTestImplementation(libs.espresso.core)\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+--- a/app/build.gradle.kts	(revision 65bc505ed14cd37a7a5cdf24b3af1dd96e41d905)
++++ b/app/build.gradle.kts	(date 1771387935494)
+@@ -4,7 +4,7 @@
+ 
+ android {
+     namespace = "com.app.smartopd"
+-    compileSdk = 35
++    compileSdk = 36
+ 
+     defaultConfig {
+         applicationId = "com.app.smartopd"
+Index: app/src/main/res/drawable/icon_student.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/icon_student.xml b/app/src/main/res/drawable/icon_student.xml
+new file mode 100644
+--- /dev/null	(date 1771386677133)
++++ b/app/src/main/res/drawable/icon_student.xml	(date 1771386677133)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="24dp" android:tint="#2E5C52" android:viewportHeight="24" android:viewportWidth="24" android:width="24dp">
++
++    <path android:fillColor="@android:color/white" android:pathData="M5,13.18v4L12,21l7,-3.82v-4L12,17l-7,-3.82zM12,3L1,9l11,6 9,-4.91V17h2V9L12,3z"/>
++
++</vector>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_splash.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_splash.xml b/app/src/main/res/layout/activity_splash.xml
+new file mode 100644
+--- /dev/null	(date 1771388293141)
++++ b/app/src/main/res/layout/activity_splash.xml	(date 1771388293141)
+@@ -0,0 +1,65 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:background="@color/white">
++
++    <ImageView
++        android:id="@+id/icon_student"
++        android:layout_width="48dp"
++        android:layout_height="48dp"
++        android:src="@drawable/icon_student"
++        android:alpha="0.15"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        android:layout_margin="70dp"/>
++
++    <ImageView
++        android:id="@+id/icon_youth"
++        android:layout_width="52dp"
++        android:layout_height="52dp"
++        android:src="@drawable/icon_youth"
++        android:alpha="0.15"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        android:layout_marginTop="140dp"
++        android:layout_marginEnd="60dp"/>
++
++
++    <ImageView
++        android:id="@+id/logo"
++        android:layout_width="300dp"
++        android:layout_height="300dp"
++        android:layout_marginTop="232dp"
++        android:src="@drawable/smartopd_logo"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.549"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <ImageView
++        android:id="@+id/icon_bank"
++        android:layout_width="44dp"
++        android:layout_height="44dp"
++        android:src="@drawable/icon_bank"
++        android:alpha="0.15"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        android:layout_margin="50dp"/>
++
++    <ImageView
++        android:id="@+id/icon_hospital"
++        android:layout_width="44dp"
++        android:layout_height="44dp"
++        android:src="@drawable/icon_hospital"
++        android:alpha="0.15"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        android:layout_marginRight="200dp"
++        android:layout_marginBottom="80dp"/>
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/drawable/icon_youth.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/icon_youth.xml b/app/src/main/res/drawable/icon_youth.xml
+new file mode 100644
+--- /dev/null	(date 1771386760713)
++++ b/app/src/main/res/drawable/icon_youth.xml	(date 1771386760713)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="24dp" android:tint="#F80A0A" android:viewportHeight="24" android:viewportWidth="24" android:width="24dp">
++
++    <path android:fillColor="@android:color/white" android:pathData="M19,3L5,3c-1.1,0 -1.99,0.9 -1.99,2L3,19c0,1.1 0.9,2 2,2h14c1.1,0 2,-0.9 2,-2L21,5c0,-1.1 -0.9,-2 -2,-2zM18,14h-4v4h-4v-4L6,14v-4h4L10,6h4v4h4v4z"/>
++
++</vector>
+\ No newline at end of file
+Index: app/src/main/res/drawable/icon_hospital.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/icon_hospital.xml b/app/src/main/res/drawable/icon_hospital.xml
+new file mode 100644
+--- /dev/null	(date 1771387358936)
++++ b/app/src/main/res/drawable/icon_hospital.xml	(date 1771387358936)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="24dp" android:tint="#F80A0A" android:viewportHeight="24" android:viewportWidth="24" android:width="24dp">
++
++    <path android:fillColor="@android:color/white" android:pathData="M19,3L5,3c-1.1,0 -1.99,0.9 -1.99,2L3,19c0,1.1 0.9,2 2,2h14c1.1,0 2,-0.9 2,-2L21,5c0,-1.1 -0.9,-2 -2,-2zM18,14h-4v4h-4v-4L6,14v-4h4L10,6h4v4h4v4z"/>
++
++</vector>
+\ No newline at end of file
+Index: app/src/main/res/drawable/icon_bank.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/icon_bank.xml b/app/src/main/res/drawable/icon_bank.xml
+new file mode 100644
+--- /dev/null	(date 1771387433044)
++++ b/app/src/main/res/drawable/icon_bank.xml	(date 1771387433044)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="24dp" android:tint="#090808" android:viewportHeight="960" android:viewportWidth="960" android:width="24dp">
++
++    <path android:fillColor="@android:color/white" android:pathData="M200,680L200,400L280,400L280,680L200,680ZM440,680L440,400L520,400L520,680L440,680ZM80,840L80,760L880,760L880,840L80,840ZM680,680L680,400L760,400L760,680L680,680ZM80,320L80,240L480,40L880,240L880,320L80,320ZM258,240L480,240L702,240L258,240ZM258,240L702,240L480,130L258,240Z"/>
++
++</vector>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"VcsDirectoryMappings\" defaultProject=\"true\" />\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+--- a/.idea/vcs.xml	(revision 65bc505ed14cd37a7a5cdf24b3af1dd96e41d905)
++++ b/.idea/vcs.xml	(date 1771385524702)
+@@ -1,4 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="VcsDirectoryMappings" defaultProject="true" />
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
+ </project>
+\ No newline at end of file
+Index: app/src/main/java/com/app/smartopd/SplashActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/app/smartopd/SplashActivity.java b/app/src/main/java/com/app/smartopd/SplashActivity.java
+new file mode 100644
+--- /dev/null	(date 1771388716424)
++++ b/app/src/main/java/com/app/smartopd/SplashActivity.java	(date 1771388716424)
+@@ -0,0 +1,76 @@
++package com.app.smartopd;
++
++import android.content.Intent;
++import android.os.Bundle;
++import android.os.Handler;
++
++import androidx.appcompat.app.AppCompatActivity;
++
++public class SplashActivity extends AppCompatActivity {
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_splash);
++
++        new Handler().postDelayed(new Runnable() {
++            @Override
++            public void run() {
++
++                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
++                startActivity(intent);
++                finish();
++
++            }
++        }, 3000); // 3 seconds delay
++    }
++
++//        decideNextScreen();
++//    }
++
++//    private void decideNextScreen() {
++//
++//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
++//
++//        if (user == null) {
++//            open(Intro_Activity.class);
++//            return;
++//        }
++//
++//        FirebaseFirestore.getInstance()
++//                .collection("users")
++//                .document(user.getUid())
++//                .get()
++//                .addOnSuccessListener(snapshot -> {
++//
++//                    if (!snapshot.exists()) {
++//                        FirebaseAuth.getInstance().signOut();
++//                        open(Intro_Activity.class);
++//                        return;
++//                    }
++//
++//                    String role = snapshot.getString("role");
++//
++//                    if ("admin".equals(role)) {
++//                        open(AdminActivity.class);
++//                    }
++//                    else {
++//                        open(HomeActivity.class);
++//                    }
++//                })
++//                .addOnFailureListener(e -> {
++//                    open(Intro_Activity.class);
++//                });
++//    }
++//
++//    private void open(Class<?> target) {
++//        Intent intent = new Intent(this, target);
++//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
++//        startActivity(intent);
++//        finish();
++//    }
++//
++//    @Override
++//    public void onBackPressed() {
++//    }
++    }
