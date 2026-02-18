@@ -1,7 +1,6 @@
 package com.app.smartopd.DoctorModule.Fragments;
 
 import android.os.Bundle;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;

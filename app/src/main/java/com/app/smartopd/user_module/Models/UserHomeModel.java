@@ -4,19 +4,34 @@ public class UserHomeModel {
 
     private String name;
     private String speciality;
+    private boolean isAvailable;
+    private boolean sessionFull;
 
-    // Required constructor
-    public UserHomeModel(String name, String speciality) {
-        this.name = name;
-        this.speciality = speciality;
+    public UserHomeModel() {
+        // Required for Firebase
     }
 
-    // Getter methods
+    public UserHomeModel(String name, String speciality,
+                         boolean isAvailable, boolean sessionFull) {
+        this.name = name;
+        this.speciality = speciality;
+        this.isAvailable = isAvailable;
+        this.sessionFull = sessionFull;
+    }
+
     public String getName() {
         return name;
     }
 
     public String getSpeciality() {
         return speciality;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public boolean isSessionFull() {
+        return sessionFull;
     }
 }

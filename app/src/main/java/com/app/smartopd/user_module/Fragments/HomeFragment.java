@@ -75,10 +75,17 @@ public class HomeFragment extends Fragment {
     private void loadHomeData() {
         fullList.clear();
 
-        fullList.add(new UserHomeModel("Dr. Aris Thorne", "Cardiology"));
-        fullList.add(new UserHomeModel("Dr. Sarah Jenkins", "Pediatrics"));
-        fullList.add(new UserHomeModel("Dr. Marcus Lee", "Neurology"));
-        fullList.add(new UserHomeModel("Dr. Elena Rodriguez", "Dermatology"));
+        fullList.add(new UserHomeModel(
+                "Dr. Aris Thorne", "Cardiology", true, false));
+
+        fullList.add(new UserHomeModel(
+                "Dr. Sarah Jenkins", "Pediatrics", false, false));
+
+        fullList.add(new UserHomeModel(
+                "Dr. Marcus Lee", "Neurology", true, true));
+
+        fullList.add(new UserHomeModel(
+                "Dr. Elena Rodriguez", "Dermatology", true, false));
     }
 
     /**
