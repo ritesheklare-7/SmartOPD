@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
 
             // Go to Home Screen
             Intent intent = new Intent(LoginActivity.this,
-                    MainActivity.class);
+                    RegistrationActivity.class);
             startActivity(intent);
             finish();
 

@@ -3,4 +3,24 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="primary_green">#253175</color>
+
+    <!-- Brand Primary (Logo Blue) -->
+    <color name="primary_blue">#2E7CC1</color>
+
+    <!-- Primary Dark (status bar / pressed state) -->
+    <color name="primary_blue_dark">#1F5F99</color>
+
+    <!-- Medical Green Accent -->
+    <color name="accent_green">#7BC62D</color>
+
+    <!-- Main Background -->
+    <color name="app_background">#F6F9FC</color>
+
+    <!-- Card / Surface -->
+    <color name="surface_white">#FFFFFFFF</color>
+
+    <!-- Divider / subtle border -->
+    <color name="divider">#E3E8EE</color>
+
+
 </resources>

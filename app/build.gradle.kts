@@ -38,14 +38,18 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation ("com.google.firebase:firebase-bom:34.9.0")
-    implementation ("com.google.firebase:firebase-analytics")
-    implementation ("com.google.firebase:firebase-auth:22.3.1")
-    implementation ("com.google.android.gms:play-services-auth:21.0.0")
 
+    // ✅ Firebase BOM (controls versions automatically)
+    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
 
+    // ✅ Firebase services (NO VERSION HERE)
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth")
 
+    // Google Sign In (optional)
+    implementation("com.google.android.gms:play-services-auth:21.0.0")
 }
